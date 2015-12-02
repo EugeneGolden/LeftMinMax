@@ -11,17 +11,32 @@ namespace MinMaxValue
     {
         //Дано натуральное число, в котором все цифры различны. Определить, какая цифра расположена в нем левее: максимальная или минимальная
 
-        public ArrayList TransferIntToList(int value)
+        public Array TransferIntToList(int value)
         {
-            ArrayList arrList = new ArrayList();            //an empty list
-            string row = Convert.ToString(value);           //the number as a string
-            char[] array = row.ToCharArray();               //now the string as an array
+            string row = Convert.ToString(value);          //the number is a string
+            char[] array = row.ToCharArray();              //the string is an array
+            int[] arrayNew = new int[row.Length];          //an empty array
 
             for (int i = 0; i < array.Length; i++)
             {
-                arrList.Add(array[i]);
+                arrayNew[i] = (int)array[i];
             }
-            return arrList;
+            return arrayNew;
+        }
+
+        public int MinMax(Array arrayInput)
+        {
+            Array arrayLocal = arrayInput;
+            int min = (int)arrayLocal.GetValue(0);
+            int max = (int)arrayLocal.GetValue(0);
+            
+            for (int i = 1; i < (arrayLocal.Length - 1); i++)
+            {
+                if ((int)arrayLocal.GetValue(i) < min)
+                {
+                    min = (int)arrayLocal.GetValue(i);
+                }
+            }
         }
         static void Main(string[] args)
         {
