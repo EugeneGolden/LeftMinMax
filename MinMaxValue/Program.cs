@@ -14,12 +14,22 @@ namespace MinMaxValue
         public Array TransferIntToArray(int value)
         {
             string row = Convert.ToString(value);          //the number is a string
+            Console.WriteLine(row);
+            Console.ReadKey();
             char[] array = row.ToCharArray();              //the string is an array
+            Console.WriteLine(array);
+            Console.ReadKey();
             int[] arrayNew = new int[row.Length];          //an empty array
+            Console.WriteLine(arrayNew);
+            Console.ReadKey();
 
             for (int i = 0; i < array.Length; i++)
             {
                 arrayNew[i] = (int)array[i];
+                Console.WriteLine("array[i] is " + (int)array[i] + " " + array.Length);
+                Console.ReadKey();
+                Console.WriteLine("arrayNew[i] is " + arrayNew[i]);
+                Console.ReadKey();
             }
             return arrayNew;
         }
