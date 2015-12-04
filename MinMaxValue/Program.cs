@@ -11,7 +11,7 @@ namespace MinMaxValue
     {
         //Дано натуральное число, в котором все цифры различны. Определить, какая цифра расположена в нем левее: максимальная или минимальная
 
-        public Array TransferIntToArray(double value)
+        public Array TransferIntToArray(string value)
         {
             string row = Convert.ToString(value);                //the number is a string
             double[] arrayNew = new double[row.Length];          //an empty array with type double
@@ -62,13 +62,12 @@ namespace MinMaxValue
         }
         static void Main(string[] args)
         {
-            double n;
-            ArrayList myList;
+            string n;
             Array myArray;
             int result;
 
             Console.Write("Enter an integer number: ");
-            n = double.Parse(Console.ReadLine());
+            n = Console.ReadLine();
             LeftMinMax lmm = new LeftMinMax();
             myArray = lmm.TransferIntToArray(n);
             result = lmm.MinMax(myArray);
