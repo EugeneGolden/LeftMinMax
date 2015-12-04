@@ -11,75 +11,68 @@ namespace MinMaxValue
     {
         //Дано натуральное число, в котором все цифры различны. Определить, какая цифра расположена в нем левее: максимальная или минимальная
 
-        public Array TransferIntToArray(int value)
+        public Array TransferIntToArray(double value)
         {
-            string row = Convert.ToString(value);          //the number is a string
-            Console.WriteLine(row);
-            Console.ReadKey();
-            char[] array = row.ToCharArray();              //the string is an array
-            Console.WriteLine(array);
-            Console.ReadKey();
-            int[] arrayNew = new int[row.Length];          //an empty array
-            Console.WriteLine(arrayNew);
-            Console.ReadKey();
+            string row = Convert.ToString(value);                //the number is a string
+            double[] arrayNew = new double[row.Length];          //an empty array with type double
 
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < row.Length; i++)
             {
-                arrayNew[i] = (int)array[i];
-                Console.WriteLine("array[i] is " + (int)array[i] + " " + array.Length);
+                arrayNew[i] = row[i];
+                Console.WriteLine("array[i] is " + row[i] + " " + row.Length);
                 Console.ReadKey();
                 Console.WriteLine("arrayNew[i] is " + arrayNew[i]);
                 Console.ReadKey();
             }
             return arrayNew;
+     
         }
 
         public int MinMax(Array arrayInput)
         {
             Array arrayLocal = arrayInput;
-            int min = (int)arrayLocal.GetValue(0);
-            int max = (int)arrayLocal.GetValue(0);
+            double min = (double)arrayLocal.GetValue(0);
+            double max = (double)arrayLocal.GetValue(0);
             int indexMin = 0;
             int indexMax = 0;
-            
+            double correction = 48;
+
             for (int i = 1; i < (arrayLocal.Length - 1); i++)
             {
-                if ((int)arrayLocal.GetValue(i) < min)
+                if ((double)arrayLocal.GetValue(i) < min)
                 {
-                    min = (int)arrayLocal.GetValue(i);
+                    min = (double)arrayLocal.GetValue(i);
                     indexMin = i;
                 }
-                if ((int)arrayLocal.GetValue(i) > max)
+                if ((double)arrayLocal.GetValue(i) > max)
                 {
-                    max = (int)arrayLocal.GetValue(i);
+                    max = (double)arrayLocal.GetValue(i);
                     indexMax = i;
                 }
             }
             if (indexMax > indexMin)
             {
-                Console.WriteLine("Минимальное значение " + min + " левее");
+                Console.WriteLine("Минимальное значение " + (min - correction) + " левее");
             }
             else
             {
-                Console.WriteLine("Максимальное значение " + max + " левее");
+                Console.WriteLine("Максимальное значение " + (max - correction) + " левее");
             }
-            return max;
+            return indexMax;
         }
         static void Main(string[] args)
         {
-            int n;
+            double n;
             ArrayList myList;
             Array myArray;
             int result;
-            
+
             Console.Write("Enter an integer number: ");
-            n = int.Parse(Console.ReadLine());
+            n = double.Parse(Console.ReadLine());
             LeftMinMax lmm = new LeftMinMax();
             myArray = lmm.TransferIntToArray(n);
             result = lmm.MinMax(myArray);
             Console.ReadKey();
-
-
         }
     }
 }
