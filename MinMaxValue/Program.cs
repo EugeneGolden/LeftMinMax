@@ -13,8 +13,8 @@ namespace MinMaxValue
 
         public Array TransferIntToArray(string value)
         {
-            string row = Convert.ToString(value);                //the number is a string
-            double[] arrayNew = new double[row.Length];          //an empty array with type double
+            string row = Convert.ToString(value);             //the number is a string
+            long[] arrayNew = new long[row.Length];          //an empty array with type long
 
             for (int i = 0; i < row.Length; i++)
             {
@@ -31,22 +31,22 @@ namespace MinMaxValue
         public int MinMax(Array arrayInput)
         {
             Array arrayLocal = arrayInput;
-            double min = (double)arrayLocal.GetValue(0);
-            double max = (double)arrayLocal.GetValue(0);
+            long min = (long)arrayLocal.GetValue(0);
+            long max = (long)arrayLocal.GetValue(0);
             int indexMin = 0;
             int indexMax = 0;
-            double correction = 48;
+            long correction = 48;
 
             for (int i = 1; i < (arrayLocal.Length - 1); i++)
             {
-                if ((double)arrayLocal.GetValue(i) < min)
+                if ((long)arrayLocal.GetValue(i) < min)
                 {
-                    min = (double)arrayLocal.GetValue(i);
+                    min = (long)arrayLocal.GetValue(i);
                     indexMin = i;
                 }
-                if ((double)arrayLocal.GetValue(i) > max)
+                if ((long)arrayLocal.GetValue(i) > max)
                 {
-                    max = (double)arrayLocal.GetValue(i);
+                    max = (long)arrayLocal.GetValue(i);
                     indexMax = i;
                 }
             }
